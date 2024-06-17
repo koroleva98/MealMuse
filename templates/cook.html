@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealMuse</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Let's Cook {{ meal.name }}</h1>
+        <img src="{{ url_for('static', filename=meal.image) }}" alt="{{ meal.name }}" style="width:600px;height:auto;">
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredient in meal.ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Instructions</h2>
+        <ol>
+            {% for instruction in meal.instructions %}
+                <li>{{ instruction }}</li>
+            {% endfor %}
+        </ol>
+        <a href="{{ url_for('home') }}" style="text-align: center" >Back to Home</a>
+    </div>
+</body>
+</html>

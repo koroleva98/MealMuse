@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealMuse</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Suggested Meal</h1>
+        <div class="form-container">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename=meal.image) }}" alt="{{ meal.name }}">
+            </div>
+            <div class="text-container">
+                <h2>Ingredients</h2>
+                <ul>
+                    {% for ingredient in meal.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    {% for instruction in meal.instructions %}
+                        <li>{{ instruction }}</li>
+                    {% endfor %}
+                </ol>
+                <form method="post" action="{{ url_for('suggest_meal') }}">
+                    <input type="hidden" name="time" value="{{ time }}">
+                    <button type="submit">Next Option</button>
+                </form>
+                <form method="post" action="{{ url_for('cook_meal') }}">
+                    <input type="hidden" name="meal_name" value="{{ meal.name }}">
+                    <button type="submit">Let’s Cook This</button>
+                </form>
+                <a href="{{ url_for('home') }}" style="text-align:center">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

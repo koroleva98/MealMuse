@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealMuse</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to MealMuse</h1>
+        <div class="img-container">
+            <img src="{{ url_for('static', filename='images/anh.png') }}" alt="Welcome to MealMuse">
+        </div>
+    </div>
+    <div class="container">
+        <form method="post" action="{{ url_for('suggest_meal') }}">
+            <label for="time">Pick the time you want to spend cooking:</label>
+            <select name="time" id="time">
+                <option value="less_than_30">Less than 30 minutes</option>
+                <option value="30_to_60">30 - 60 minutes</option>
+                <option value="more_than_60">More than 60 minutes</option>
+            </select>
+            <button type="submit">Suggest a Meal</button>
+        </form>
+    </div>
+</body>
+</html>
